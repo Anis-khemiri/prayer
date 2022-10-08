@@ -3,7 +3,7 @@ import React from 'react';
 function Card({ post }) {
   // let q = Object.keys(post.timings);
   // console.log(q)
-  // console.log(post.timings)
+  console.log(post.timings)
   let myArr = Object.entries(post.timings).slice(0, 8);
  myArr.lenght = 8;
   console.log(myArr);

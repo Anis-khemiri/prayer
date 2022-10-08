@@ -9,7 +9,8 @@ function App() {
  
  
   const [message, setMessage] = useState("tunis");
-  const baseURL = `http://api.aladhan.com/v1/calendarByCity?city=${message}&country=${message}&method=2&month=04&year=2022`;
+  const baseURL = `http://api.aladhan.com/v1/timingsByCity?city=${message}&country=${message}&method=8`;
+  // const baseURL = `http://api.aladhan.com/v1/calendarByCity?city=${message}&country=${message}&method=2&month=04&year=2022`;
 
   const [post, setPost] = React.useState(null);
   let myDate = new Date();
@@ -35,8 +36,8 @@ function App() {
   React.useEffect(() => {
   
     axios.get(baseURL).then((response) => {
-      setPost(response.data);
-      console.log(response.data);
+      setPost(response.data.data);
+      console.log(response.data.data.timings);
     });
   }, [baseURL]);
 
@@ -49,7 +50,7 @@ function App() {
 
       <hr />
       <div className="mySection">
-        <Card post={post.data[0]} />
+        <Card post={post} />
         {/* <Mycountry handleChange={handleChange}/> */}
         <input className="input"  type= "text"  required="" onChange={handleChange} />
       </div>
